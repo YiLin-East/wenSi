@@ -96,32 +96,20 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-
         banner.setDatas(imgList);
         Log.i(TAG,imgList.toString()+"==============================");
         banner.setAdapter(new BannerImageAdapter<String>(imgList) {
             @Override
             public void onBindView(BannerImageHolder holder, String data, int position, int size) {
+                //  设置圆形指示点，设置循环时间
                 Glide.with(holder.itemView)
                         .load(data)
                         .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                         .into(holder.imageView);
             }
         }).setIndicator(new CircleIndicator(context)).setLoopTime(1500);
-        //  设置圆形指示点，设置循环时间
-
-
-
-
-
-//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(MainActivity.this,
-//                                                     LinearLayoutManager.VERTICAL, false);
-//        rc.setLayoutManager(linearLayoutManager);
-//        RcAdapter adapter = new RcAdapter(MainActivity.this);
-//        rc.setAdapter(adapter);
 
     }
-
 
     public void setRC(RecyclerView rc){
         Log.i(TAG,newsList.toString()+"map");
@@ -131,45 +119,6 @@ public class MainActivity extends AppCompatActivity {
         rc.setLayoutManager(new LinearLayoutManager(context));
         rc.setAdapter(recy);
     }
-
-//    public class RcAdapter extends RecyclerView.Adapter<RcAdapter.ViewHolder>{
-//
-//        Activity activity;
-//        TextView tv_title,tv_time;
-//        ImageView imageView;
-//
-//        public RcAdapter(Activity activity) {
-//            this.activity = activity;
-//
-//        }
-//
-//        @NonNull
-//        @Override
-//        public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-//            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.purchase_item,parent,false);
-//            return new ViewHolder(v);
-//        }
-//
-//        @Override
-//        public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-//            tv_title.setText(time.get(0));
-//            tv_time.setText(time.get(1));
-//
-//        }
-//
-//        @Override
-//        public int getItemCount() {
-//            return time.size();
-//        }
-//
-//        public class ViewHolder extends RecyclerView.ViewHolder {
-//            public ViewHolder(@NonNull View itemView) {
-//                super(itemView);
-//                tv_title = itemView.findViewById(R.id.news_title);
-//                tv_time = itemView.findViewById(R.id.news_date);
-//            }
-//        }
-//    }
 
 }
 
