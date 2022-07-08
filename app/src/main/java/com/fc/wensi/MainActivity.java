@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -31,14 +32,12 @@ import java.util.List;
 import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String TAG = "MainActivity";
 
     Context context = MainActivity.this;
 
     List<String> imgList = new ArrayList<>();
     List<Map<String, Object>> newsList = new ArrayList<>();
-    private static final String TAG = "MainActivity";
-
-
 
 
 
@@ -48,13 +47,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Banner banner = findViewById(R.id.banner);
         RecyclerView rc = findViewById(R.id.recyclerView2);
-        Handler handler=new Handler(){
+
+        @SuppressLint("HandlerLeak") Handler handler=new Handler(){
             @Override
             public void handleMessage(Message msg) {
-                switch (msg.what){
-                    case 1:
-                        setRC(rc);
-                        break;
+                if (msg.what == 1) {
+                    setBanner(banner);
+                    setRC(rc);
+                } else {
+                    throw new IllegalStateException("Unexpected value: " + msg.what);
                 }
             }
         };
@@ -95,8 +96,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+
+
+    }
+
+    public void setBanner(Banner banner){
         banner.setDatas(imgList);
-        Log.i(TAG,imgList.toString()+"==============================");
         banner.setAdapter(new BannerImageAdapter<String>(imgList) {
             @Override
             public void onBindView(BannerImageHolder holder, String data, int position, int size) {
@@ -106,7 +111,7 @@ public class MainActivity extends AppCompatActivity {
                         .apply(RequestOptions.bitmapTransform(new RoundedCorners(30)))
                         .into(holder.imageView);
             }
-        }).setIndicator(new CircleIndicator(context)).setLoopTime(1500);
+        }).setIndicator(new CircleIndicator(context)).setLoopTime(3000);
 
     }
 

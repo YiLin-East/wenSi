@@ -32,14 +32,15 @@ public class News_adapter extends RecyclerView.Adapter <News_adapter.ViewHolder>
         ViewHolder viewHolder = new ViewHolder(view);
         return viewHolder;
     }
+
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        String test = list.get(position).get("title").toString();
         holder.recy_title.setText(list.get(position).get("title").toString());
         holder.recy_date.setText(list.get(position).get("date").toString());
         Glide.with(holder.recy_imageView.getContext()).load(list.get(position).get("url")).into(holder.recy_imageView);
 
     }
+
     @Override
     public int getItemCount() {
         return list.size();
