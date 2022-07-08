@@ -106,13 +106,12 @@ public class MainActivity extends AppCompatActivity {
                         .into(holder.imageView);
             }
         }).setIndicator(new CircleIndicator(context)).setLoopTime(3000);
-
     }
 
     public void setRC(RecyclerView rc){
         Log.i(TAG,newsList.toString()+"map");
         rc.addItemDecoration(new DividerItemDecoration(context, DividerItemDecoration.VERTICAL));
-        News_adapter recy=new News_adapter(newsList,context);
+        NewsAdapter recy=new NewsAdapter(newsList,context);
         //设置布局显示格式
         rc.setLayoutManager(new LinearLayoutManager(context));
         rc.setAdapter(recy);

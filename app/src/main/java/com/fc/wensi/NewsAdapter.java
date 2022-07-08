@@ -16,12 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class News_adapter extends RecyclerView.Adapter <News_adapter.ViewHolder> {
+public class NewsAdapter extends RecyclerView.Adapter <NewsAdapter.ViewHolder> {
 
     public List<Map<String, Object>> list = new ArrayList<>();
     public Context con;
 
-    public News_adapter(List<Map<String,Object>> list, Context con) {
+    public NewsAdapter(List<Map<String,Object>> list, Context con) {
         this.con=con;
         this.list=list;
     }
