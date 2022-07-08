@@ -5,7 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -35,9 +34,9 @@ public class News_adapter extends RecyclerView.Adapter <News_adapter.ViewHolder>
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, @SuppressLint("RecyclerView") final int position) {
-        holder.recy_title.setText(list.get(position).get("title").toString());
-        holder.recy_date.setText(list.get(position).get("date").toString());
-        Glide.with(holder.recy_imageView.getContext()).load(list.get(position).get("url")).into(holder.recy_imageView);
+        holder.recyTitle.setText(list.get(position).get("title").toString());
+        holder.recyDate.setText(list.get(position).get("date").toString());
+        Glide.with(holder.recyImageView.getContext()).load(list.get(position).get("url")).into(holder.recyImageView);
 
     }
 
@@ -47,14 +46,14 @@ public class News_adapter extends RecyclerView.Adapter <News_adapter.ViewHolder>
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView recy_title;
-        public ImageView recy_imageView;
-        public TextView recy_date;
+        public TextView recyTitle;
+        public TextView recyDate;
+        public ImageView recyImageView;
         public ViewHolder(View itemView) {
             super(itemView);
-            recy_title = itemView.findViewById(R.id.news_title);
-            recy_imageView = itemView.findViewById(R.id.news_image);
-            recy_date = itemView.findViewById(R.id.news_date);
+            recyTitle = itemView.findViewById(R.id.news_title);
+            recyDate = itemView.findViewById(R.id.news_date);
+            recyImageView = itemView.findViewById(R.id.news_image);
         }
     }
 }

@@ -33,9 +33,7 @@ import java.util.Map;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
-
     Context context = MainActivity.this;
-
     List<String> imgList = new ArrayList<>();
     List<Map<String, Object>> newsList = new ArrayList<>();
 
@@ -94,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
                 Log.e(TAG,reasonOBJ.toString());
             }
         });
-
-
-
-
     }
 
     public void setBanner(Banner banner){
